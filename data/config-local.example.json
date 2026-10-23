@@ -1,0 +1,21 @@
+# MEU Job Bot - config local (NÃO COMMITAR)
+# Copie para data/config-local.json e preencha suas chaves
+# O painel salva em chrome.storage, isto serve só para importação rápida
+
+{
+  "felipe": {
+    "email": {
+      "apiKey": "SUA_CHAVE_WEB3FORMS_AQUI",
+      "toEmail": "felipe.reis.dias@gmail.com"
+    },
+    "ai": {
+      "apiKey": "SUA_CHAVE_OPENAI_AQUI"
+    }
+  },
+  "luciana": {
+    "email": {
+      "apiKey": "OUTRA_CHAVE_WEB3FORMS_SE_QUISER",
+      "toEmail": "luhsp0@gmail.com"
+    }
+  }
+}

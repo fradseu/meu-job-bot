@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Vaga de teste</title>
+  <link rel="stylesheet" href="fixture.css">
+</head>
+<body>
+  <header>
+    <h1>Vaga de teste</h1>
+    <p>Formulário local para o robô treinar preenchimento, anexo e envio.</p>
+  </header>
+
+  <main>
+    <article class="job">
+      <h2 id="jobTitle">Vaga</h2>
+      <p class="meta" id="jobMeta"></p>
+      <p>
+        Estamos contratando pessoa desenvolvedora para atuar em produto digital.
+        Stack: JavaScript, TypeScript, React, Node.js, PostgreSQL e Git.
+      </p>
+      <p>Modelo de contratação: CLT. Nível: júnior/pleno. Local: remoto.</p>
+
+      <div id="applyArea"></div>
+      <div id="captchaArea"></div>
+      <div id="successArea"></div>
+    </article>
+  </main>
+
+  <div class="modalBackdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <form class="modal" id="applyForm" novalidate>
+      <h3 id="modalTitle">Candidatar-se</h3>
+      <p class="sub">Os dados abaixo são do formulário de teste.</p>
+
+      <div class="grid">
+        <label class="field full">Nome completo
+          <input name="nome" id="f-nome" autocomplete="name" required>
+        </label>
+
+        <label class="field">E-mail
+          <input name="email" id="f-email" type="email" autocomplete="email" required>
+        </label>
+
+        <label class="field">Telefone / WhatsApp
+          <input name="telefone" id="f-fone" type="tel" autocomplete="tel">
+        </label>
+
+        <label class="field">Cidade
+          <input name="cidade" id="f-cidade">
+        </label>
+
+        <label class="field">Pretensão salarial
+          <input name="pretensao" id="f-pretensao" inputmode="numeric">
+        </label>
+
+        <label class="field full">LinkedIn
+          <input name="linkedin" id="f-linkedin" type="url">
+        </label>
+
+        <label class="field">Escolaridade
+          <select name="escolaridade" id="f-escolaridade">
+            <option value="">Selecione</option>
+            <option>Ensino Médio</option>
+            <option>Superior cursando</option>
+            <option>Superior completo</option>
+            <option>Pós-graduação</option>
+          </select>
+        </label>
+
+        <label class="field">Disponibilidade
+          <select name="disponibilidade" id="f-disponibilidade">
+            <option value="">Selecione</option>
+            <option>Imediata</option>
+            <option>15 dias</option>
+            <option>30 dias</option>
+          </select>
+        </label>
+
+        <label class="field full">Currículo (PDF)
+          <input name="curriculo" id="f-curriculo" type="file" accept=".pdf,.doc,.docx">
+        </label>
+
+        <label class="field full">Mensagem para o recrutador
+          <textarea name="mensagem" id="f-mensagem" rows="4"></textarea>
+        </label>
+
+        <label class="check full">
+          <input type="checkbox" name="lgpd" id="f-lgpd">
+          <span>Aceito os termos e a política de privacidade (LGPD) e autorizo o contato.</span>
+        </label>
+      </div>
+
+      <p id="formError" class="hint" style="color:#b42318;display:none"></p>
+
+      <div class="actions">
+        <button type="button" class="btn btn-ghost" id="cancelBtn">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Enviar candidatura</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id") || "0";
+    const title = params.get("titulo") || "Desenvolvedor(a)";
+    const company = params.get("empresa") || "Empresa de teste";
+    const storageKey = `mjb_fixture_applied_${id}`;
+
+    document.title = `${title} — vaga de teste`;
+    document.getElementById("jobTitle").textContent = title;
+    document.getElementById("jobMeta").textContent = `${company} · Remoto · Publicada hoje`;
+
+    const applyArea = document.getElementById("applyArea");
+    const modal = document.getElementById("modal");
+    const errorBox = document.getElementById("formError");
+    const successArea = document.getElementById("successArea");
+
+    function showSuccess() {
+      successArea.innerHTML = '<div class="success">Candidatura enviada com sucesso!</div>';
+      applyArea.innerHTML = "";
+    }
+
+    function renderApply() {
+      if (localStorage.getItem(storageKey)) {
+        successArea.innerHTML = '<div class="success">Você já se candidatou a esta vaga.</div>';
+        return;
+      }
+      applyArea.innerHTML =
+        '<button type="button" class="btn btn-primary" id="applyBtn">Candidatar-se à vaga</button>';
+      document.getElementById("applyBtn").addEventListener("click", () => {
+        modal.hidden = false;
+      });
+    }
+
+    if (params.get("captcha") === "1") {
+      document.getElementById("captchaArea").innerHTML =
+        '<div class="captchaBox">Verifique que você não é um robô para continuar.</div>';
+    } else {
+      renderApply();
+    }
+
+    document.getElementById("cancelBtn").addEventListener("click", () => {
+      modal.hidden = true;
+    });
+
+    document.getElementById("applyForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const nome = document.getElementById("f-nome").value.trim();
+      const email = document.getElementById("f-email").value.trim();
+      const lgpd = document.getElementById("f-lgpd").checked;
+
+      if (!nome || !email) {
+        errorBox.textContent = "Preencha nome e e-mail.";
+        errorBox.style.display = "block";
+        return;
+      }
+      if (!lgpd) {
+        errorBox.textContent = "É preciso aceitar os termos (LGPD).";
+        errorBox.style.display = "block";
+        return;
+      }
+
+      localStorage.setItem(storageKey, new Date().toISOString());
+      modal.hidden = true;
+      showSuccess();
+    });
+  </script>
+</body>
+</html>

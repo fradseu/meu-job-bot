@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>MEU Job Bot — painel de execução</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">JB</div>
+      <div>
+        <h1>MEU Job Bot</h1>
+        <p class="sub">entra na vaga, preenche, anexa o currículo e envia</p>
+      </div>
+    </div>
+    <div class="topActions">
+      <span id="statusPill" class="pill idle">parado</span>
+      <button id="btnTest" class="ghost" type="button" title="Preenche a vaga aberta na aba atual, sem enviar">Testar aba atual</button>
+      <button id="btnProbe" class="ghost" type="button" title="Gera um relatório da página para ajustar seletores">Diagnóstico</button>
+      <button id="btnStart" class="primary" type="button">Iniciar</button>
+      <button id="btnStop" class="danger" type="button" disabled>Parar</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panelHead">
+        <h2>Configuração</h2>
+        <span id="saveHint" class="muted"></span>
+      </div>
+
+      <details open>
+        <summary>Seu perfil</summary>
+        <p class="hint">É isso que o robô digita nos formulários. Quanto mais completo, menos campo sobra para você.</p>
+        <div id="profileGrid" class="grid"></div>
+        <div class="fileRow">
+          <label class="fileLabel">
+            Currículo (PDF ou DOCX)
+            <input id="resumeInput" type="file" accept=".pdf,.doc,.docx">
+          </label>
+          <span id="resumeInfo" class="muted">nenhum arquivo</span>
+          <button id="resumeClear" class="ghost small hidden" type="button">remover</button>
+        </div>
+      </details>
+
+      <details open>
+        <summary>Buscas</summary>
+        <p class="hint">Cole a URL da página de resultados. O robô lê os links das vagas nessa página e visita uma por uma.</p>
+        <div id="searchList" class="searchList"></div>
+        <div class="rowBtns">
+          <button id="btnAddSearch" class="ghost small" type="button">+ adicionar busca</button>
+          <button id="btnAuth" class="ghost small" type="button" title="Autoriza o robô a ler os sites das suas buscas">autorizar sites</button>
+          <button id="btnClearHistory" class="ghost small" type="button" title="Permite tentar de novo vagas já registradas">zerar histórico</button>
+        </div>
+      </details>
+
+      <details open>
+        <summary>Regras de execução</summary>
+        <div id="rulesGrid" class="grid"></div>
+      </details>
+    </section>
+
+    <section class="panel">
+      <div class="panelHead">
+        <h2>Execução</h2>
+        <div id="stats" class="stats"></div>
+      </div>
+
+      <div id="reviewBanner" class="banner hidden">
+        <div>
+          <strong>Confira a candidatura antes de enviar</strong>
+          <p id="reviewTitle" class="reviewTitle"></p>
+          <p class="hint">O formulário já está preenchido na aba da vaga. <a id="reviewLink" href="#" target="_blank" rel="noreferrer">abrir em outra aba</a></p>
+        </div>
+        <div class="bannerActions">
+          <button id="reviewSubmit" class="primary" type="button">Confirmar envio</button>
+          <button id="reviewSkip" class="ghost" type="button">Pular</button>
+          <button id="reviewStop" class="danger" type="button">Parar</button>
+        </div>
+      </div>
+
+      <div class="tableWrap">
+        <table class="queue">
+          <thead>
+            <tr><th>#</th><th>Vaga</th><th>Site</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody id="queueBody"></tbody>
+        </table>
+      </div>
+
+      <div class="panelHead logHead">
+        <h2>Log</h2>
+        <div class="rowBtns">
+          <button id="btnCsv" class="ghost small" type="button">exportar CSV</button>
+          <button id="btnClearLog" class="ghost small" type="button">limpar</button>
+        </div>
+      </div>
+      <pre id="log" class="log"></pre>
+    </section>
+  </main>
+
+  <script type="module" src="panel.js"></script>
+</body>
+</html>

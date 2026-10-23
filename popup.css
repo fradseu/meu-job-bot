@@ -1,0 +1,189 @@
+:root {
+  color-scheme: light;
+  --ink: #14222b;
+  --muted: #5c6b73;
+  --line: #d5e0e4;
+  --paper: #f4f7f6;
+  --card: #ffffff;
+  --teal: #0f766e;
+  --teal-dark: #115e59;
+  --amber: #9a6700;
+  --bad: #9f1239;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 380px;
+  margin: 0;
+  padding: 14px 14px 18px;
+  background: var(--paper);
+  color: var(--ink);
+  font: 13px/1.4 "Segoe UI", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.site {
+  flex: none;
+  max-width: 120px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #d7efec;
+  color: var(--teal-dark);
+  font-size: 11px;
+  text-align: right;
+}
+
+.note, .status {
+  margin: 10px 0;
+  color: var(--muted);
+}
+
+section {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.searches, .actions, .grid {
+  display: grid;
+  gap: 6px;
+}
+
+.actions, .grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+button, .chip {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: var(--teal);
+  color: white;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+button.secondary, .chip {
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-weight: 600;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.chip {
+  text-align: left;
+}
+
+.chip small {
+  display: block;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+label {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+textarea, input[type="number"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 7px 8px;
+  background: var(--card);
+  color: var(--ink);
+  font: 12px/1.35 ui-monospace, Consolas, monospace;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.check {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 0;
+}
+
+.jobs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 240px;
+  overflow: auto;
+}
+
+.jobs li {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  gap: 8px;
+  align-items: start;
+  margin-bottom: 6px;
+  padding: 8px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.jobs strong {
+  display: block;
+  font-size: 13px;
+}
+
+.jobs span, .jobs em {
+  color: var(--muted);
+  font-style: normal;
+  font-size: 11px;
+}
+
+.score {
+  font-weight: 700;
+  color: var(--teal-dark);
+}
+
+.score.low { color: var(--bad); }
+.score.mid { color: var(--amber); }
+
+.empty {
+  color: var(--muted);
+  padding: 8px 0;
+}

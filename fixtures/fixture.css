@@ -1,0 +1,90 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font: 15px/1.5 "Segoe UI", system-ui, sans-serif;
+  color: #16202b;
+  background: #f4f6fa;
+}
+
+header {
+  padding: 28px 32px 8px;
+}
+
+h1 { margin: 0 0 4px; font-size: 26px; }
+header p { margin: 0; color: #5c6b7f; }
+
+main { padding: 12px 32px 48px; max-width: 860px; }
+
+ul.jobs { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+ul.jobs li {
+  background: #fff;
+  border: 1px solid #dde3ec;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+ul.jobs a { color: #0b6bcb; font-weight: 600; text-decoration: none; font-size: 16px; }
+ul.jobs a:hover { text-decoration: underline; }
+ul.jobs small { color: #6b7a8d; }
+.hint { color: #6b7a8d; font-size: 13px; }
+
+/* página de vaga */
+article.job {
+  background: #fff;
+  border: 1px solid #dde3ec;
+  border-radius: 14px;
+  padding: 24px;
+}
+article.job h2 { margin: 0 0 4px; font-size: 24px; }
+article.job .meta { color: #5c6b7f; margin: 0 0 16px; }
+article.job p { margin: 0 0 12px; }
+
+.btn {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 11px 18px;
+  font-weight: 700;
+}
+.btn-primary { background: #0b6bcb; color: #fff; }
+.btn-primary:hover { background: #0957a5; }
+.btn-ghost { background: #fff; color: #16202b; border-color: #cfd8e5; }
+
+.modalBackdrop {
+  position: fixed; inset: 0; background: rgba(12, 20, 32, .55);
+  display: grid; place-items: center; padding: 20px; z-index: 50;
+}
+.modal {
+  width: 100%; max-width: 560px; max-height: 88vh; overflow: auto;
+  background: #fff; border-radius: 16px; padding: 22px;
+  box-shadow: 0 24px 60px rgba(10, 20, 35, .35);
+}
+.modal h3 { margin: 0 0 4px; font-size: 20px; }
+.modal .sub { color: #5c6b7f; margin: 0 0 16px; font-size: 13px; }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 5px; font-size: 12px; color: #4a5869; }
+.field.full { grid-column: 1 / -1; }
+.field input, .field select, .field textarea {
+  font: inherit; font-size: 14px; color: #16202b;
+  border: 1px solid #cfd8e5; border-radius: 9px; padding: 9px 11px; background: #fff;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: 2px solid rgba(11, 107, 203, .25); border-color: #0b6bcb;
+}
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: #33414f; }
+.actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; }
+
+.success {
+  margin-top: 14px; padding: 12px 14px; border-radius: 10px;
+  background: #e8f7ee; border: 1px solid #9cd9b4; color: #17603a; font-weight: 600;
+}
+
+.captchaBox {
+  margin: 16px 0; padding: 18px; border: 1px solid #e5c07b;
+  background: #fff8e6; border-radius: 12px; text-align: center; color: #7a5a12;
+}

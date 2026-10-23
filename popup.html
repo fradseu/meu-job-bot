@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>MEU Job Bot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">Transição para engenharia de software</p>
+      <h1>MEU Job Bot</h1>
+    </div>
+    <span id="site" class="site">aba atual</span>
+  </header>
+
+  <p class="note">
+    Entre na Catho e na InfoJobs pelo Chrome, uma vez. A extensão usa essa sessão.
+    Ela não guarda e-mail nem senha.
+  </p>
+
+  <section>
+    <h2>Abrir busca</h2>
+    <div id="searches" class="searches"></div>
+  </section>
+
+  <section class="actions">
+    <button id="scan" type="button">Varrer esta página</button>
+    <button id="apply" type="button" class="secondary" disabled>Candidatar marcadas</button>
+  </section>
+  <p id="status" class="status">Abra uma busca e clique em varrer.</p>
+
+  <section>
+    <div class="row">
+      <h2>Vagas desta página</h2>
+      <label class="check"><input id="onlyGood" type="checkbox" checked> só as boas</label>
+    </div>
+    <ul id="jobs" class="jobs"></ul>
+  </section>
+
+  <section>
+    <h2>O que conta como a sua área</h2>
+    <label>
+      Termos que sobem a nota
+      <textarea id="include" rows="5"></textarea>
+    </label>
+    <label>
+      Termos que derrubam a nota
+      <textarea id="exclude" rows="4"></textarea>
+    </label>
+    <label>
+      Cidades ou modalidade (um por linha, só dá ponto extra)
+      <textarea id="cities" rows="2" placeholder="São Paulo&#10;remoto"></textarea>
+    </label>
+    <div class="grid">
+      <label>
+        Nota mínima
+        <input id="minScore" type="number" min="0" max="30" value="4">
+      </label>
+      <label>
+        Máximo de cliques por leva
+        <input id="maxApplies" type="number" min="1" max="5" value="3">
+      </label>
+    </div>
+    <button id="save" type="button" class="secondary">Salvar perfil</button>
+  </section>
+
+  <section>
+    <h2>Modo triagem (recomendado)</h2>
+    <p class="note">
+      O robô pagina as buscas, abre cada vaga nova, compara a descrição com o seu currículo
+      e monta um e-mail com os links. Ele não se candidata: você abre e aplica.
+    </p>
+    <button id="openTriage" type="button">Abrir triagem diária</button>
+  </section>
+
+  <section>
+    <h2>Modo completo</h2>
+    <p class="note">
+      O painel entra em cada vaga, preenche o formulário com seu perfil, anexa o currículo
+      e envia — ou para e espera você confirmar.
+    </p>
+    <button id="openPanel" type="button" class="secondary">Abrir painel de execução</button>
+  </section>
+
+  <script src="profile.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

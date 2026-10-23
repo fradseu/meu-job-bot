@@ -1,0 +1,137 @@
+Felipe reis amorim dias de souza (Currículo - Profissional) Data da última alteração: 23/10/2026
+E-mail: felipe.reis.dias@gmail.com
+Perfil do currículo: Profissional
+Data de nascimento: 28/12/1988
+Endereço: CARAMBOLA, 84 ap 42 a
+Bairro: Conj. José Bonifácio
+Cidade: São Paulo - SP
+CEP: 08253-570
+Telefone
+residencial: (11) 971965478
+Telefone celular: (11) 985973926
+Pretensão salarial
+A partir de R$ 4.000,00
+Resumo do Currículo
+Como Analista de Logística especializado em virtualização de tarefas, contribuo para a otimização de processos e
+automação no setor de logística, aplicando habilidades em Robotic Process Automation (RPA) e ferramentas analíticas
+para promover eficiência no fluxo de suprimentos.
+Com experiência em análise de dados e automação de processos, utilizo ferramentas como GreenBelt ,Python,
+Selenium, Golang, GitHub, GitHub Actions,JavaScript, Google App Scritps, Power BI, SQL e VBA para criar relatórios
+dinâmicos e melhorar a tomada de decisões estratégicas. Sou orientado a solucionar desafios logísticos por meio de
+inovação e inteligência de dados.
+Cargo de interesse
+Engenheiro de Software
+Informações adicionais
+Qualificações:
+Frameworks & UI
+• Desenvolvimento web utilizando Python (Django)
+•Node.js
+•Angular.
+•React.
+• Criação de indicadores e dashboards com Power BI
+• Consultas e análise de dados em SQL Server 2017
+• Desenvolvimento de soluções internas para apoio à gestão e tomada de decisão
+• Participação em projetos de melhoria contínua e automação de processos
+Backend, Cloud & Serverless
+• Firebase (Auth, Firestore, Cloud Functions)
+• Supabase (PostgreSQL, Edge Functions)
+• Google Cloud Run
+• APIs REST
+Banco de Dados
+• PostgreSQL
+• MySQL
+• SQL Server
+• Firestore (NoSQL)
+Automação & Integrações
+• Google Apps Script
+• Selenium
+• RPA
+Versionamento & CI/CD
+• Git
+• GitHub
+• GitHub Actions (Workflows de CI/CD)
+Linguagens
+• Python
+• MicroPython
+• C++ Like(Arduino)
+• Go (Golang)
+• JavaScript
+• TypeScript
+• SQL
+Metodologias & Processos
+• Metodologias Ágeis (SCRUM)
+• Six Sigma – Green Belt
+Hardware & IoT / Automação Física
+• Arduino (programação e automação de sensores/atuadores)
+• Raspberry Pi Pico W (projetos IoT e integração com sistemas)
+• Desenvolvimento de projetos de automação e prototipagem rápida com Arduino e Raspberry Pi Pico W
+• Integração com sensores, atuadores e APIs para controle remoto e monitoramento
+Idiomas
+Inglês: Fluente
+Espanhol: Intermediário
+Experiência profissional
+Hospital Geral de Guaianases - 04/2026 até o momento - 6 meses
+• Analista Administrativo - último cargo - 6 meses
+Salário: R$ 4.320,00
+Projeto 1 — MeuHGG (Sistema Hospitalar Ciência de dados)
+Plataforma web completa para visualização de dados hospitalar com backend em Go (Gin) e frontend Angular 21
+(standalone components), JavaScript, Node.js. Arquitetura com REST API, autenticação JWT stateful, RBAC (controle
+de acesso por módulos/recursos/grupos), SSE para eventos em tempo real, banco PostgreSQL com schema
+versionado via migrations. Responsável por modelagem de dados, criação de endpoints, middlewares de autorização,
+e integração com frontend reativo.
+Projeto 2 — RPA MeuHGG (Automação Desktop)
+Aplicação desktop RPA em Go + Wails v2 com frontend React, operando como extrator de dados do sistema hospitalar
+MV Soul via chromedp (Chrome DevTools Protocol). Pipeline completo de ETL: extração de PDFs, limpeza e
+transformação de dados, geração de relatórios Excel, e envio estruturado para banco PostgreSQL via fila de ingestão.
+Implementação de agendador autônomo com fila, watchdog, retry com backoff exponencial, timeout, e execução
+concorrente controlada (10 workers). Inclui bypass de acesso LAS com automação de janelas nativas Win32.
+Integração — Pipeline de Ingestão (Go + PostgreSQL)
+Projetei e implementei fila de ingestão no backend Go (padrão queue-based ingestion) com chunking de payloads, lock
+otimista, workers concorrentes com semáforo, e 35+ funções PL/pgSQL para upsert/transformação de dados
+hospitalares. Substituiu Edge Functions do Supabase por processamento local, garantindo rastreabilidade por status
+(pending ? processing ? done/error), cleanup automático, e middleware de autenticação por token fixo (API Key).
+Grupo Apisul - 06/2025 a 12/2025 - 6 meses
+• Analista de Logística - último cargo - 6 meses
+Salário: R$ 3.300,00
+Cobertura de férias, RPA, selenium,golang, python, angular, javascript, typescript, excel, vba, api, google sheets,
+google app script
+Randstad Brasil Recursos Humanos Ltda - 01/2023 a 01/2025 - 2 anos
+• Analista de Logística - último cargo - 2 anos
+Salário: R$ 2.500,00
+Análise preditiva logística para a VIVO BRASIL, responsável por extrair dados sql e torre de controle, transformar e
+distribuir em formato informativo e planilhas para o time de logística preditiva. SQL, PowerQuery, Excel, Vba, Python.
+Formação
+Graduação #1
+Instituição: Universidade Nove de Julho
+Grau de formação: Graduação
+Nome do curso: Logística
+Graduação #2
+Instituição: Estácio
+Grau de formação: Pós-graduação
+Nome do curso: desenvolvimento full stack
+Graduação #3
+Instituição: Estácio
+Grau de formação: Graduação
+Nome do curso: Engenharia de Software
+Cursos e especializações
+Curso #1
+Nome do curso: Data Studio - Ferramenta para Dashboard
+Instituição: FM2S
+Duração: Curta (até 40 horas)
+Ano de conclusão: 2022
+Curso #2
+Nome do curso: PREPARANDO DADOS PARA ANÁLISE - MICROSOFT POWER BI
+Instituição: Fundação Bradesco
+Duração: Curta (até 40 horas)
+Ano de conclusão: 2022
+Curso #3
+Nome do curso: Certificado Lean Seis Sigmas Yellow Belt
+Instituição: FM2S Educação e Consultoria
+Duração: Curta (até 40 horas)
+Ano de conclusão: 2022
+Curso #4
+Nome do curso: Certificação White Belt em Lean Six-Sigma
+Instituição: Escola EDTI
+Duração: Curta (até 40 horas)
+Ano de conclusão: 2020
+Copyright© 1996-2026 Catho. Todos os direitos reservados.

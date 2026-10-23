@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>MEU Job Bot — triagem diária</title>
+  <link rel="stylesheet" href="triagem.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">T</div>
+      <div>
+        <h1>Triagem diária</h1>
+        <p class="sub">varre as páginas, abre cada vaga, compara com o currículo e manda o link no e-mail</p>
+      </div>
+    </div>
+    <div class="profileSelector" id="profileSelector"></div>
+    <div class="topActions">
+      <span id="statusPill" class="pill idle">parado</span>
+      <button id="btnRun" class="primary" type="button">Rodar agora</button>
+      <button id="btnStop" class="danger" type="button" disabled>Parar</button>
+      <button id="btnReval" class="ghost" type="button" title="Recalcula a nota das vagas já guardadas, sem reabrir as páginas">Reavaliar guardadas</button>
+      <a class="ghost linkBtn" href="panel.html" target="_blank" rel="noreferrer">Candidatura automática</a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="col">
+      <div class="panel">
+        <div class="panelHead">
+          <h2>Currículo e alvo</h2>
+          <span id="saveHint" class="muted"></span>
+        </div>
+        <p class="hint">É este texto que o robô compara com a descrição de cada vaga. Quanto mais específico, melhor a nota.</p>
+        <label class="field">
+          <span>Texto do currículo</span>
+          <textarea id="resumeText" rows="9" placeholder="Cole aqui o texto do seu currículo..."></textarea>
+        </label>
+        <div class="rowBtns">
+          <label class="ghost small fileLabel">
+            importar .txt
+            <input id="resumeFile" type="file" accept=".txt,.md,text/plain">
+          </label>
+          <button id="btnResumeSeed" class="ghost small" type="button">usar data/curriculo.txt</button>
+          <span id="resumeMeta" class="muted small"></span>
+        </div>
+        <div id="candidateGrid" class="grid"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panelHead"><h2>Busca e ritmo</h2></div>
+        <p class="hint">A paginação é automática: o robô segue o botão “próxima” de cada site até o limite de páginas. Os <strong>cargos alvo</strong> só afetam a nota — use o botão abaixo para criar uma busca por cargo.</p>
+        <div id="searchGrid" class="grid"></div>
+        <div class="searchList" id="searchList"></div>
+        <div class="rowBtns">
+          <button id="btnAddSearch" class="ghost small" type="button">+ adicionar busca</button>
+          <button id="btnGenSearches" class="ghost small" type="button" title="Cria uma busca na Catho e uma na InfoJobs para cada cargo alvo que ainda não tem busca">gerar buscas dos cargos alvo</button>
+          <button id="btnAuth" class="ghost small" type="button">autorizar sites</button>
+          <span id="searchMeta" class="muted small"></span>
+          <span class="muted small">Catho e InfoJobs já vêm liberados.</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panelHead"><h2>Avaliação</h2></div>
+        <p class="hint">A nota local é gratuita e sempre roda. Com IA ligada, as vagas promissoras ganham uma segunda leitura do currículo.</p>
+        <div id="aiGrid" class="grid"></div>
+        <div class="rowBtns">
+          <button id="btnTestAi" class="ghost small" type="button">testar IA com uma vaga falsa</button>
+          <span id="aiHint" class="muted small"></span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panelHead"><h2>E-mail diário</h2></div>
+        <p class="hint">Só o link e a avaliação saem no e-mail. Nada é enviado às empresas.</p>
+        <div id="emailGrid" class="grid"></div>
+        <div class="rowBtns">
+          <button id="btnEmailTest" class="ghost small" type="button">enviar teste</button>
+          <button id="btnEmailDigest" class="ghost small" type="button" title="Monta o e-mail com as vagas que estão na tabela, com as notas, e envia agora">enviar vagas do painel</button>
+          <span id="emailHint" class="muted small"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="col">
+      <div class="panel">
+        <div class="panelHead">
+          <h2>Execução</h2>
+          <div id="stats" class="stats"></div>
+        </div>
+        <div class="runbar">
+          <div class="progress"><div id="progressFill" class="progressFill"></div></div>
+          <div class="runmeta">
+            <span id="phase">ocioso</span>
+            <span id="nextRun">—</span>
+          </div>
+        </div>
+        <pre id="log" class="log"></pre>
+      </div>
+
+      <div class="panel">
+        <div class="panelHead">
+          <h2>Vagas avaliadas</h2>
+          <div class="rowBtns">
+            <input id="filterText" class="smallInput" type="search" placeholder="filtrar por título/empresa">
+            <select id="filterScore" class="smallInput">
+              <option value="0">todas as notas</option>
+              <option value="50">50+</option>
+              <option value="60" selected>60+</option>
+              <option value="75">75+</option>
+            </select>
+            <label class="check small"><input id="filterNew" type="checkbox"> só novas</label>
+            <button id="btnCsv" class="ghost small" type="button">CSV</button>
+            <button id="btnClearJobs" class="ghost small" type="button" title="Apaga o histórico de vagas já vistas">zerar histórico</button>
+          </div>
+        </div>
+        <div class="tableWrap">
+          <table class="jobs">
+            <thead>
+              <tr><th>Nota</th><th>Vaga</th><th>Empresa / local</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody id="jobsBody"></tbody>
+          </table>
+        </div>
+        <div id="jobsFoot" class="muted small"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panelHead">
+          <h2>Prévia do e-mail</h2>
+          <div class="rowBtns">
+            <span id="digestMeta" class="muted small"></span>
+            <button id="btnDigestHtml" class="ghost small" type="button">baixar .html</button>
+            <button id="btnDigestCopy" class="ghost small" type="button">copiar lista</button>
+          </div>
+        </div>
+        <p id="digestSubject" class="digestSubject">Nenhum digest gerado ainda.</p>
+        <div class="previewWrap">
+          <iframe id="digestPreview" title="prévia do e-mail" sandbox="allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="triagem.js"></script>
+</body>
+</html>

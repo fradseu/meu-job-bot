@@ -1,0 +1,61 @@
+{
+  "manifest_version": 3,
+  "name": "MEU Job Bot",
+  "version": "3.5.1",
+  "description": "Triagem diária de vagas: pagina Catho/InfoJobs, abre cada vaga, compara com o currículo e manda os links no seu e-mail.",
+  "permissions": ["storage", "unlimitedStorage", "activeTab", "scripting", "tabs", "alarms"],
+  "host_permissions": [
+    "https://www.catho.com.br/*",
+    "https://*.catho.com.br/*",
+    "https://www.infojobs.com.br/*",
+    "https://*.infojobs.com.br/*",
+    "https://www.linkedin.com/*",
+    "https://*.gupy.io/*",
+    "https://programathor.com.br/*",
+    "https://www.programathor.com.br/*",
+    "https://www.vagas.com.br/*",
+    "https://br.indeed.com/*",
+    "https://api.brevo.com/*",
+    "https://api.resend.com/*",
+    "https://api.web3forms.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "file:///*"
+  ],
+  "optional_host_permissions": ["*://*/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "MEU Job Bot",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.catho.com.br/*",
+        "https://*.catho.com.br/*",
+        "https://www.infojobs.com.br/*",
+        "https://*.infojobs.com.br/*",
+        "https://www.linkedin.com/*",
+        "https://*.gupy.io/*",
+        "https://programathor.com.br/*",
+        "https://www.programathor.com.br/*"
+      ],
+      "js": ["profile.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
